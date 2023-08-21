@@ -35,6 +35,7 @@
         <thead>
             <tr>
                 <th scope="col">Tanggal order</th>
+                <th scope="col">Kode Pemesanan</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Jumlah barang</th>
                 <th scope="col">Harga jual</th>
@@ -47,6 +48,7 @@
             @foreach ( $detailsTransaksi as $items )
             <tr>
                 <th>{{ $items->order_date }}</th>
+                <th>{{ $items->tranaksi->kode_pemesanan }}</th>
                 <th>{{ $items->Product->name }}</th>
                 <th>{{ $items->jumlah_barang }}</th>
                 <th>Rp.{{ number_format($items->selling_price) }}</th>
@@ -56,7 +58,7 @@
             </tr>
             @endforeach
             <tr>
-                <th colspan="3" style="text-align: center">Total penjualan</th>
+                <th colspan="4" style="text-align: center">Total penjualan</th>
                 <th>Rp.{{ number_format($total) }}</th>
                 <th></th>
                 <th>Rp.{{ number_format($purchase_price) }}</th>

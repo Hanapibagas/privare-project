@@ -53,6 +53,7 @@ Transaksi
                     <thead>
                         <tr>
                             <th scope="col">No</th>
+                            <th scope="col">Kode Pemesanan</th>
                             <th scope="col">Nama akun pengguna</th>
                             <th scope="col">Diskon</th>
                             <th scope="col">Tanggal</th>
@@ -65,6 +66,7 @@ Transaksi
                         @foreach ( $transaksi as $key => $items )
                         <tr>
                             <th>{{ $key+1}}</th>
+                            <th>{{ $items->kode_pemesanan }}</th>
                             <th>{{ $items->user->name }}</th>
                             <th>{{ $items->discount }}%</th>
                             <th>{{ date('d F Y', strtotime($items->created_at)) }}</th>
@@ -134,6 +136,18 @@ Transaksi
                     <div class="form-group">
                         <label>Nama Lengkap :</label>
                         <h7 class="modal-title">{{ $item->nama_lengkap }}</h7>
+                    </div>
+                    <div class="form-group">
+                        <label>Product :</label>
+                        @foreach ( $item->detailTransaksi as $details )
+                        <h7 class="modal-title">{{ $details->Product->name }}</h7>,
+                        @endforeach
+                    </div>
+                    <div class="form-group">
+                        <label>Total Product :</label>
+                        @foreach ( $item->detailTransaksi as $details )
+                        <h7 class="modal-title">{{ $details->jumlah_barang }}</h7>,
+                        @endforeach
                     </div>
                     <div class="form-group">
                         <label>Bukti Bayar :</label>
